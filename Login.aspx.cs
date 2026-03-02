@@ -26,16 +26,16 @@ namespace shatha11822App3.ClinicManagementSystem
 
                 if (dr.Read())
                 {
-                    // ✅ Save session
+                   
                     Session["PatientId"] = dr["patientId"];
                     Session["PatientName"] = dr["fullName"];
 
-                    // ✅ Go to patient profile
+                    
                     Response.Redirect("~/ClinicManagementSystem/Patient/PatientProfile.aspx");
                 }
                 else
                 {
-                    // ❌ Wrong login
+                    
                     ClientScript.RegisterStartupScript(
                         this.GetType(),
                         "alert",
@@ -45,4 +45,5 @@ namespace shatha11822App3.ClinicManagementSystem
             }
         }
     }
+
 }
