@@ -13,7 +13,8 @@ namespace shatha11822App3.web11
         {
             Session.Clear();
             Session.Abandon();
-            Response.Redirect("~/ClinicManagementSystem/Login.aspx"); // or Signup.aspx for now
+            Response.Redirect("~/ClinicManagementSystem/Login.aspx"); 
         }
     }
+
 }
