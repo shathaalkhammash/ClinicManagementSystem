@@ -70,7 +70,7 @@
 
         <asp:ValidationSummary runat="server" CssClass="validator" />
 
-        <!-- Row 1 -->
+        
         <div class="row">
             <div class="col-md-6">
                 <label class="form-label">First Name *</label>
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <!-- Row 2 -->
+        
         <div class="row mt-3">
             <div class="col-md-6">
                 <label class="form-label">Email *</label>
@@ -113,7 +113,7 @@
             </div>
         </div>
 
-        <!-- Row 3 -->
+        
         <div class="row mt-3">
             <div class="col-md-6">
                 <label class="form-label">Gender *</label>
@@ -136,7 +136,7 @@
             </div>
         </div>
 
-        <!-- Row 4 -->
+        
         <div class="row mt-3">
             <div class="col-md-6">
                 <label class="form-label">Password *</label>
@@ -180,3 +180,4 @@
     </div>
 
 </asp:Content>
+
