@@ -39,10 +39,13 @@
                     CssClass="btn btn-primary"
                     OnClick="btnUpdate_Click" />
 
-                <asp:Button ID="btnDelete" runat="server"
+                <asp:Button ID="btnDelete"
+                    runat="server"
                     Text="Delete"
-                    CssClass="btn btn-danger"
-                    OnClick="btnDelete_Click" />
+                    CssClass="btn btn-danger btn-lg px-4"
+                    OnClick="btnDelete_Click"
+                    OnClientClick="return confirm('Are you sure you want to delete?');" />
+
             </div>
         </div>
 
