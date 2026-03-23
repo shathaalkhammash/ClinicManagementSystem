@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO; // important
+using System.Configuration; // impprtant
+using System.Data; //important
+using System.Data.SqlClient; // important
 
 namespace shatha11822App3.web11.Admin
 {
