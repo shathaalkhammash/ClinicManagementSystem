@@ -1,5 +1,4 @@
 using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI.WebControls;
@@ -15,7 +14,6 @@ namespace shatha11822App3.web11.Admin
 
         }
 
-        // زر إضافة دكتور جديد
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             pnlAddEdit.Visible = true;
@@ -27,9 +25,15 @@ namespace shatha11822App3.web11.Admin
             hfDoctorID.Value = "";
         }
 
-        // حفظ الدكتور
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //  Server-side validation
+            if (string.IsNullOrEmpty(txtDoctorName.Text) || string.IsNullOrEmpty(txtPhone.Text))
+            {
+                Response.Write("<script>alert('Please fill all required fields');</script>");
+                return;
+            }
+
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
@@ -54,17 +58,17 @@ namespace shatha11822App3.web11.Admin
                 cmd.ExecuteNonQuery();
 
                 gvDoctors.DataBind();
+                rptDoctors.DataBind();
+
                 pnlAddEdit.Visible = false;
             }
         }
 
-        // زر إلغاء
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             pnlAddEdit.Visible = false;
         }
 
-        // تعديل من الجدول
         protected void gvDoctors_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridViewRow row = gvDoctors.Rows[e.NewEditIndex];
@@ -78,23 +82,20 @@ namespace shatha11822App3.web11.Admin
             pnlAddEdit.Visible = true;
         }
 
-        // إلغاء التعديل
         protected void gvDoctors_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvDoctors.EditIndex = -1;
             gvDoctors.DataBind();
         }
 
-        // تحديث الدكتور
         protected void gvDoctors_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
         }
 
-        // حذف الدكتور
         protected void gvDoctors_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            e.Cancel = true; // يمنع SqlDataSource من تنفيذ الحذف
+            e.Cancel = true;
 
             int doctorID = Convert.ToInt32(gvDoctors.DataKeys[e.RowIndex].Value);
 
@@ -110,11 +111,7 @@ namespace shatha11822App3.web11.Admin
             }
 
             gvDoctors.DataBind();
-        }
-
-        protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
-        {
-
+            rptDoctors.DataBind();
         }
     }
 }
