@@ -1,132 +1,120 @@
-﻿<%@ Page Title="Login"
-    Language="C#"
-    MasterPageFile="~/Site.Master"
-    AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs"
-    Inherits="shatha11822App3.ClinicManagementSystem.Login" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
 <style>
-    body {
-        background: #f4f7fb;
-    }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: 100vh;
+        }
 
-    .login-container {
-        min-height: 80vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        .login-card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
 
-    .login-card {
-        background: #ffffff;
-        width: 420px;
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        text-align: center;
-    }
+        .login-header {
+            background-color: #0056b3; 
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
 
-    .login-title {
-        font-size: 26px;
-        font-weight: 700;
-        color: #0d6efd;
-        margin-bottom: 30px;
-    }
+        .btn-kfmc {
+            background-color: #0056b3;
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
 
-    .form-center {
-        max-width: 100%;
-    }
+            .btn-kfmc:hover {
+                background-color: #004494;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
 
-    .form-control {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
+        .form-control {
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #dee2e6;
+        }
 
-    .btn-login {
-        width: 100%;
-        padding: 12px;
-        border-radius: 10px;
-        background: #0d6efd;
-        color: white;
-        font-size: 16px;
-        font-weight: 600;
-        border: none;
-        cursor: pointer;
-    }
+            .form-control:focus {
+                border-color: #0056b3;
+                box-shadow: 0 0 0 0.2rem rgba(0,86,179,0.1);
+            }
 
-    .btn-login:hover {
-        background: #0b5ed7;
-    }
+        .input-icon {
+            position: relative;
+        }
 
-    .login-link {
-        margin-top: 15px;
-        font-size: 14px;
-    }
+            .input-icon i {
+                position: absolute;
+                left: 15px;
+                top: 15px;
+                color: #adb5bd;
+            }
 
-    .validator {
-        color: #dc3545;
-        font-size: 13px;
-        display: block;
-        margin-bottom: 8px;
-    }
-</style>
+            .input-icon input {
+                padding-left: 40px;
+            }
+    </style>
 
-<div class="login-container">
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card p-4 shadow-lg border-0" style="width: 400px; border-radius: 15px;">
 
-    <div class="login-card">
+            <h2 class="text-center text-primary fw-bold mb-3">KFMC Login</h2>
 
-        <h2 class="login-title">Login</h2>
+            <div class="text-center">
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold mb-3 d-block" />
+            </div>
 
-        <asp:ValidationSummary runat="server"
-            CssClass="validator" />
+            <asp:ValidationSummary runat="server" CssClass="text-danger mb-2" DisplayMode="List" />
 
-        <div class="form-center">
+            <div class="mb-3">
+                <label class="form-label text-muted small">Email Address</label>
+                <asp:TextBox ID="txtEmail"
+                    runat="server"
+                    CssClass="form-control" />
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="txtEmail"
+                    ErrorMessage="Email is required"
+                    CssClass="text-danger small"
+                    Display="Dynamic" />
+            </div>
 
-            <asp:TextBox ID="txtEmail"
-                runat="server"
-                CssClass="form-control"
-                Placeholder="Enter your email" />
-
-            <asp:RequiredFieldValidator
-                runat="server"
-                ControlToValidate="txtEmail"
-                ErrorMessage="Email is required"
-                CssClass="validator" />
-
-            <asp:TextBox ID="txtPassword"
-                runat="server"
-                TextMode="Password"
-                CssClass="form-control"
-                Placeholder="Enter your password" />
-
-            <asp:RequiredFieldValidator
-                runat="server"
-                ControlToValidate="txtPassword"
-                ErrorMessage="Password is required"
-                CssClass="validator" />
+            <div class="mb-3">
+                <label class="form-label text-muted small">Password</label>
+                <asp:TextBox ID="txtPassword"
+                    runat="server"
+                    CssClass="form-control"
+                    TextMode="Password" />
+                <asp:RequiredFieldValidator
+                    runat="server"
+                    ControlToValidate="txtPassword"
+                    ErrorMessage="Password is required"
+                    CssClass="text-danger small"
+                    Display="Dynamic" />
+            </div>
 
             <asp:Button ID="btnLogin"
                 runat="server"
-                Text="Login"
-                CssClass="btn-login"
+                CssClass="btn btn-primary w-100 py-2 shadow-sm"
+                Text="Sign In"
                 OnClick="btnLogin_Click" />
 
-        </div>
+            <div class="text-center mt-4 border-top pt-3">
+                <span class="text-muted small">New to the clinic?</span><br />
+                <a runat="server"
+                    href="~/ClinicManagementSystem/Patient/Signup1.aspx"
+                    class="btn btn-link text-success text-decoration-none fw-bold mt-1">Create Patient Account
+                </a>
+            </div>
 
-        <div class="login-link">
-            Don’t have an account?
-           <a href="Patient/Signup1.aspx">
-                Sign up as a patient
-            </a>
         </div>
-
     </div>
-
-</div>
 
 </asp:Content>
