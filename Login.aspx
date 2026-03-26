@@ -1,4 +1,13 @@
-<style>
+<%@ Page Title="Login"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="Login.aspx.cs"
+    Inherits="shatha11822App3.ClinicManagementSystem.Patient.Login" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             height: 100vh;
