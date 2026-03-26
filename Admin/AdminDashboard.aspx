@@ -50,7 +50,7 @@
                     <h5>Registered Patients</h5>
                     <h3>
                         <asp:Label ID="lblPatientCount" runat="server" Text="0"></asp:Label></h3>
-                    <a href="ManagePatient.aspx" class="text-white small text-decoration-none">View All Patients →</a>
+                    <a href="ManagePatients.aspx" class="text-white small text-decoration-none">View All Patients →</a>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                     <h5>Active Doctors</h5>
                     <h3>
                         <asp:Label ID="lblDoctorCount" runat="server" Text="0"></asp:Label></h3>
-                    <a href="#" class="text-white small text-decoration-none">Manage Staff →</a>
+                    <a href= "ManageDoctors.aspx" class="text-white small text-decoration-none">Manage Staff →</a>
                 </div>
             </div>
 
